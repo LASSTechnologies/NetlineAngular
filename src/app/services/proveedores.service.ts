@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -48,8 +47,4 @@ export class ProveedoresService {
   modificar(proveedor: object) {
     return this.http.put(this.url, proveedor);
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a

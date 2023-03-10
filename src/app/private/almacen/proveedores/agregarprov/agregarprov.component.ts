@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { ProveedoresService } from 'src/app/services/proveedores.service';
-=======
-import { FormBuilder, Validators } from '@angular/forms';
-import { ProveedoresService } from '../../../../services/proveedores.service';
-import { Router } from '@angular/router';
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
 
 @Component({
   selector: 'app-agregarprov',

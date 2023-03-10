@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { ClientesService } from 'src/app/services/clientes.service';
-=======
-import { FormBuilder, Validators } from '@angular/forms';
-import { ClientesService } from 'src/app/services/clientes.service';
-import { Router } from '@angular/router';
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
 
 @Component({
   selector: 'app-agregarcli',
@@ -13,11 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./agregarcli.component.css'],
 })
 export class AgregarcliComponent {
-<<<<<<< HEAD
   constructor(private ServiceCli: ClientesService) { }
-=======
-  constructor(private ServiceCli: ClientesService) {}
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
   file: any;
   clientes: any;
   cliente = {
@@ -57,13 +47,7 @@ export class AgregarcliComponent {
       this.cliente.estatus,
       this.file
     ).subscribe((res) => {
-<<<<<<< HEAD
       alert("Cliente agregado correctamente");
-=======
-      const alerta = document.querySelector('.alert')!;
-      alerta.textContent = 'Cliente agregado correctamente';
-      alerta.classList.remove('d-none');
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
       this.limpiarCli();
       setTimeout(() => {
         location.reload();
@@ -86,8 +70,4 @@ export class AgregarcliComponent {
     this.cliente.estatus = '';
     this.cliente.imagen = '';
   } //Cierre del metodo limpiarEmp
-<<<<<<< HEAD
 } //Cierre de la clase AgregarcliComponent
-=======
-} //Cierre de la clase AgregarcliComponent
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a

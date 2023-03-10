@@ -1,5 +1,4 @@
 <div>
-<<<<<<< HEAD
     <form class="needs-validation" novalidate>
         <div class="form-row">
             <div class="col-md-6 mb-3">
@@ -39,74 +38,3 @@
         <button class="btn btn-info" (click)="guardarProv()">Guardar</button>
     </form>
 </div>
-=======
-  <form class="needs-validation" novalidate>
-    <div class="form-row">
-      <div class="col-md-6 mb-3">
-        <label for="validationCustom01">Nombre</label>
-        <input
-          type="text"
-          class="form-control"
-          name="nombre"
-          id="validationCustom01"
-          ngDefaultControl
-          [(ngModel)]="proveedor.nombre"
-        />
-        <div class="valid-feedback">Correcto!</div>
-        <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="validationCustom02">Direccion</label>
-        <input
-          type="text"
-          class="form-control"
-          name="direccion"
-          id="validationCustom02"
-          ngDefaultControl
-          [(ngModel)]="proveedor.direccion"
-        />
-        <div class="valid-feedback">Correcto!</div>
-        <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="col-md-6 mb-3">
-        <label for="validationCustom03">Telefono</label>
-        <small id="emailHelp" class="form-text text-muted"
-          >Ingresa los telefonos separados por comas.</small
-        >
-        <input
-          type="text"
-          class="form-control"
-          name="telefono"
-          id="validationCustom03"
-          ngDefaultControl
-          [(ngModel)]="proveedor.telefono"
-          multiple
-        />
-        <div class="valid-feedback">Correcto!</div>
-        <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="validationCustom05">Correo</label>
-        <small id="emailHelp" class="form-text text-muted"
-          >Ingresa los correos separados por comas.</small
-        >
-        <input
-          type="text"
-          class="form-control"
-          name="correo"
-          id="validationCustom05"
-          ngDefaultControl
-          [(ngModel)]="proveedor.correo"
-          multiple
-        />
-        <div class="valid-feedback">Correcto!</div>
-        <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
-      </div>
-    </div>
-    <button class="btn btn-info" (click)="guardarProv()">Guardar</button>
-  </form>
-</div>
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a

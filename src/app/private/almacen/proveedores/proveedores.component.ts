@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { ProveedoresService } from 'src/app/services/proveedores.service';
-=======
-import { FormBuilder, Validators } from '@angular/forms';
-import { ProveedoresService } from '../../../services/proveedores.service';
-import { Router } from '@angular/router';
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
 
 @Component({
   selector: 'app-proveedores',
@@ -13,11 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./proveedores.component.css'],
 })
 export class ProveedoresComponent {
-<<<<<<< HEAD
   constructor(private ServiceProveedor: ProveedoresService) { }
-=======
-  constructor(private ServiceProveedor: ProveedoresService) {}
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
   proveedores: any = [];
   proveedor = {
     codigo: '',
@@ -27,14 +17,11 @@ export class ProveedoresComponent {
     correo: '',
   };
 
-<<<<<<< HEAD
   p: number = 1;
   nPag:number=0;
   buscarTexto='';
   buscarEstatus='';
 
-=======
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
   ngOnInit(): void {
     this.consultarTodoProveedores();
   }
@@ -97,8 +84,4 @@ export class ProveedoresComponent {
     this.proveedor.telefono = '';
     this.proveedor.correo = '';
   } //Cierre del metodo limpiarEmp
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a

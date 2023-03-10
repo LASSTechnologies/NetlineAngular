@@ -17,16 +17,12 @@
     "@angular/core": "^15.2.0",
     "@angular/forms": "^15.2.0",
     "@angular/material": "^15.2.0",
-<<<<<<< HEAD
+
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
-=======
-    "@angular/platform-browser": "^15.1.0",
-    "@angular/platform-browser-dynamic": "^15.1.0",
-    "@angular/router": "^15.1.0",
     "jquery": "^3.6.3",
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
+
     "ngx-pagination": "^6.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

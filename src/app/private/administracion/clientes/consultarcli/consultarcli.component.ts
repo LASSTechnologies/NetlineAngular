@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { ClientesService } from 'src/app/services/clientes.service';
-=======
-import { FormBuilder, Validators } from '@angular/forms';
-import { ClientesService } from 'src/app/services/clientes.service';
-import { Router } from '@angular/router';
->>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
 
 @Component({
   selector: 'app-consultarcli',
