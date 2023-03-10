@@ -1,0 +1,340 @@
+<div>
+    <form class="needs-validation" novalidate>
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom05">Id</label>
+                <input type="number" class="form-control" name="id" id="validationCustom05" ngDefaultControl
+                    [(ngModel)]="cotizacion.codigo" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom01">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="validationCustom01" ngDefaultControl
+                [(ngModel)]="cotizacion.nombre" />
+            <div class="valid-feedback">Correcto!</div>
+            <div class="invalid-feedback">
+                Por favor ingresa un dato valido.
+            </div>
+        </div>
+
+        <fieldset>
+            <legend>Cliente</legend>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Empresa</label>
+                <input type="text" class="form-control" name="nombre" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.cliente.empresa" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Nombre</label>
+                <input type="text" class="form-control" name="apellido" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.cliente.nombre" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Telefono</label>
+                <input type="number" class="form-control" name="telefono" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.cliente.telefono" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Correo</label>
+                <input type="email" class="form-control" name="correo" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.cliente.correo" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Direccion</label>
+                <input type="text" class="form-control" name="direccion" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.cliente.direccion" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Empleado</legend>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Recibe</label>
+                <input type="text" class="form-control" name="recibe" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.empleado.recibe" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Participan</label>
+                <input type="time" class="form-control" name="fin" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.empleado.participa" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Fecha</legend>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Recepcion</label>
+                <input type="text" class="form-control" name="recepcion" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.fecha.recepcion" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Vigencia</label>
+                <input type="time" class="form-control" name="vigencia" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.fecha.vigencia" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Pago</label>
+                <input type="text" class="form-control" name="pago" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.pago" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <fieldset>
+            <legend>Servicios</legend>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Cantidad</label>
+                <input type="number" class="form-control" name="cantidad" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.servicios.cantidad" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Imagen</label>
+                <input type="file" class="form-control" name="imagen" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.servicios.imagen" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Descripcion</label>
+                <input type="text" class="form-control" name="descripcion" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.servicios.descripcion" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Precio</label>
+                <input type="decimal" class="form-control" name="precio" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.servicios.precio" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Subtotal</label>
+                <input type="decimal" class="form-control" name="subtotal" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.servicios.subtotal" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Productos</legend>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Cantidad</label>
+                <input type="number" class="form-control" name="cantidad" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.productos.cantidad" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Garantia</label>
+                <input type="text" class="form-control" name="darantia" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.productos.garantia" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Entrega</label>
+                <input type="date" class="form-control" name="entrega" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.productos.entrega" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Imagen</label>
+                <input type="file" class="form-control" name="imagen" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.productos.imagen" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Descripcion</label>
+                <input type="text" class="form-control" name="descripcion" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.productos.descripcion" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Precio</label>
+                <input type="decimal" class="form-control" name="precio" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.productos.precio" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Utilidad</label>
+                <input type="decimal" class="form-control" name="utilidad" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.productos.utilidad" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">importe</label>
+                <input type="decimal" class="form-control" name="importe" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.productos.importe" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">subtotal</label>
+                <input type="decimal" class="form-control" name="subtotal" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.productos.subtotal" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">proveedor</label>
+                <input type="text" class="form-control" name="proveedor" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.productos.proveedor" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Total</label>
+                <input type="decimal" class="form-control" name="pago" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.total" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Notas</label>
+                <input type="text" class="form-control" name="notas" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.notas" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Pago</label>
+                <input type="text" class="form-control" name="pago" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="cotizacion.pago" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Estatus</label>
+                <select class="form-control" id="estatus" name="estatus" ngDefaultControl
+                    [(ngModel)]="cotizacion.estatus">
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                </select>
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-info" (click)="guardarCot()">
+            Guardar
+        </button>
+    </form>
+</div>

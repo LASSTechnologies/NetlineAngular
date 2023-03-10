@@ -1,0 +1,209 @@
+<div>
+<<<<<<< HEAD
+    <form class="needs-validation" novalidate>
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom01">Codigo</label>
+                <input type="text" class="form-control" name="codigo" id="validationCustom01" readonly ngDefaultControl
+                    [(ngModel)]="this.ServiceProveedor.proveedor.codigo" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Nombre</label>
+                <input type="text" class="form-control" name="nombre" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="this.ServiceProveedor.proveedor.nombre" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom02">Direccion</label>
+                <input type="text" class="form-control" name="direccion" id="validationCustom02" ngDefaultControl
+                    [(ngModel)]="this.ServiceProveedor.proveedor.direccion" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Telefono</label>
+                <small id="emailHelp" class="form-text text-muted">Ingresa los telefonos separados por comas.</small>
+                <input type="text" class="form-control" name="telefono" id="validationCustom03" ngDefaultControl
+                    [(ngModel)]="this.ServiceProveedor.proveedor.telefono" multiple />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom05">Correo</label>
+                <small id="emailHelp" class="form-text text-muted">Ingresa los correos separados por comas.</small>
+                <input type="text" class="form-control" name="correo" id="validationCustom05" ngDefaultControl
+                    [(ngModel)]="this.ServiceProveedor.proveedor.correo" multiple />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <button class="btn btn-success" style="color: black" type="submit" (click)="modificarPro()">
+                    Actualizar datos
+                </button>
+                <button data-toggle="modal" data-target="#confirmarEliminar" class="btn btn-danger">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="modal fade" id="confirmarEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    ¿Seguro que quieres eliminar a este cliente?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger"
+                        (click)="eliminarPro(this.ServiceProveedor.proveedor.codigo)">
+                        Eliminar
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+=======
+  <form class="needs-validation" novalidate>
+    <div class="form-row">
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom01">Codigo</label>
+        <input
+          type="text"
+          class="form-control"
+          name="codigo"
+          id="validationCustom01"
+          readonly
+          ngDefaultControl
+          [(ngModel)]="this.ServiceProveedor.proveedor.codigo"
+        />
+        <div class="valid-feedback">Correcto!</div>
+        <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom01">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          name="nombre"
+          id="validationCustom01"
+          ngDefaultControl
+          [(ngModel)]="this.ServiceProveedor.proveedor.nombre"
+        />
+        <div class="valid-feedback">Correcto!</div>
+        <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom02">Direccion</label>
+        <input
+          type="text"
+          class="form-control"
+          name="direccion"
+          id="validationCustom02"
+          ngDefaultControl
+          [(ngModel)]="this.ServiceProveedor.proveedor.direccion"
+        />
+        <div class="valid-feedback">Correcto!</div>
+        <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom03">Telefono</label>
+        <small id="emailHelp" class="form-text text-muted"
+          >Ingresa los telefonos separados por comas.</small
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="telefono"
+          id="validationCustom03"
+          ngDefaultControl
+          [(ngModel)]="this.ServiceProveedor.proveedor.telefono"
+          multiple
+        />
+        <div class="valid-feedback">Correcto!</div>
+        <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom05">Correo</label>
+        <small id="emailHelp" class="form-text text-muted"
+          >Ingresa los correos separados por comas.</small
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="correo"
+          id="validationCustom05"
+          ngDefaultControl
+          [(ngModel)]="this.ServiceProveedor.proveedor.correo"
+          multiple
+        />
+        <div class="valid-feedback">Correcto!</div>
+        <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <button
+          class="btn btn-success"
+          style="color: black"
+          type="submit"
+          (click)="modificarPro()"
+        >
+          Actualizar datos
+        </button>
+        <button
+          data-toggle="modal"
+          data-target="#confirmarEliminar"
+          class="btn btn-danger"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </form>
+  <div
+    class="modal fade"
+    id="confirmarEliminar"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          ¿Seguro que quieres eliminar a este cliente?
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="eliminarPro(this.ServiceProveedor.proveedor.codigo)"
+          >
+            Eliminar
+          </button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+>>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a

@@ -1,0 +1,166 @@
+<div class="container">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">
+            <i id="iconoComponente" class="fas fa-users"
+                style="font-size: 50px; color: rgb(0, 130, 198); padding: 0 20px"></i>
+            Clientes
+        </h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="button" class="btn" id="btnAgregar" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-plus"></i>
+                Agregar
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">
+                        <i class="fas fa-user-plus"
+                            style="font-size: 50px; color: rgb(0, 130, 198); padding: 0 20px"></i>
+                        Agregar Cliente
+                    </h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-agregarcli></app-agregarcli>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="consultarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Detalle Cliente</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-consultarcli></app-consultarcli>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="table-filter">
+        <div class="row">
+            <div class="col-sm-10">
+                <span class="filter-icon"><i class="fa fa-filter"></i></span>
+                <div class="filter-group">
+                    <label>Buscar</label>
+                    <input type="text" class="form-control" id="buscarTexto" name="buscarTexto" [(ngModel)]="buscarTexto">
+                </div>
+
+                <div class="filter-group">
+                    <label>Estatus</label>
+                    <select class="form-control" id="buscarEstatus" name="buscarEstatus" [(ngModel)]="buscarEstatus">
+                        <option value="" selected="">Todos</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+            </div>
+
+            <div class="col-sm-2 text-right">
+                <div class="show-entries">
+                    <span>Mostrar</span>
+                    <select class="form-control" id="per_page" [(ngModel)]="nPag">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="table-responsive-xl">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="">#</th>
+                    <th class="">Nombre</th>
+                    <th class="">Tipo</th>
+                    <th class="">Dirección</th>
+                    <th class="">RFC</th>
+                    <th class="">Responsable</th>
+                    <th class="">Horario</th>
+                    <th class="">Imagen</th>
+                    <th class="">Estatus</th>
+                    <th class="">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr scope="row"
+                    *ngFor="let cliente of clientes | buscar:buscarTexto |estatus:buscarEstatus | paginate: { itemsPerPage: nPag, currentPage: p }">
+                    <td>{{ cliente.codigo }}</td>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.tipo }}</td>
+                    <td>{{ cliente.direccion }}</td>
+                    <td>{{ cliente.rfc }}</td>
+                    <td>
+                        {{ cliente.responsable.nombre }} {{ cliente.responsable.apellido
+                        }}<br />{{ cliente.responsable.telefono }}<br />{{
+                        cliente.responsable.correo
+                        }}
+                    </td>
+                    <td>{{ cliente.horario.inicio }} - {{ cliente.horario.fin }}</td>
+                    <td *ngIf="!cliente.imagen; else otraimg">
+                        <img src="http://localhost:3000/foto/defaultuser.png" alt="imagen" width="100px" height="100px"
+                            style="border-radius: 20px" />
+                    </td>
+                    <ng-template #otraimg>
+                        <td>
+                            <img src="{{ cliente.imagen }}" alt="Imagen no disponible" width="100px" height="100px"
+                                style="border-radius: 20px" />
+                        </td>
+                    </ng-template>
+                    <td>{{ cliente.estatus }}</td>
+                    <td>
+                        <!-- <button -->
+                        <!--   type="button" -->
+                        <!--   class="btn btn-primary" -->
+                        <!--   data-toggle="modal" -->
+                        <!--   data-target="#exampleModal" -->
+                        <!-- > -->
+                        <!--   Editar -->
+                        <!-- </button> -->
+                        <button type="button" class="btn detalle-btn" style="border: none; background: none"
+                            data-toggle="modal" data-target="#consultarModal" (click)="consultarCli(cliente.codigo)">
+                            <i style="color: rgb(0, 89, 148); position: relative" class="fas fa-eye">
+                                <span class="detalle-text">Ver detalle</span>
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="p = $event" previousLabel="Anterior"
+            nextLabel="Siguiente"></pagination-controls>
+    </div>
+</div>

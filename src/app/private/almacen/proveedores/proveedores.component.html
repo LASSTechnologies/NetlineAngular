@@ -1,0 +1,274 @@
+<div class="container">
+<<<<<<< HEAD
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">
+            <i id="iconoComponente" class="fas fa-truck"
+                style="font-size: 50px; color: rgb(0, 130, 198); padding: 0 20px"></i>
+            Proveedores
+        </h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="button" class="btn" id="btnAgregar" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-plus"></i>
+                Agregar
+=======
+  <div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+  >
+    <h1 class="h2">
+      <i
+        id="iconoComponente"
+        class="fas fa-truck"
+        style="font-size: 50px; color: rgb(0, 130, 198); padding: 0 20px"
+      ></i>
+      Proveedores
+    </h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <button
+        type="button"
+        class="btn"
+        id="btnAgregar"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        <i class="fas fa-plus"></i>
+        Agregar
+      </button>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3">
+    <ng-container *ngFor="let pro of proveedores">
+      <div class="col mb-4">
+        <div class="card h-100">
+          <div class="card-header bg-dark text-white">
+            <i class="fas fa-user"></i> {{ pro.nombre }}
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <i class="fas fa-map-marker-alt"></i> {{ pro.direccion }}
+            </p>
+            <ul class="list-unstyled">
+              <li *ngFor="let tel of pro.telefono">
+                <i class="fas fa-phone"></i> {{ tel }}
+              </li>
+            </ul>
+            <ul class="list-unstyled">
+              <li *ngFor="let correo of pro.correo">
+                <i class="fas fa-envelope"></i> {{ correo }}
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <button
+              type="button"
+              class="btn"
+              id="btnAgregar"
+              data-toggle="modal"
+              data-target="#consultarModal"
+              (click)="consultarProv(pro.codigo)"
+            >
+              Ver detalle
+>>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
+            </button>
+          </div>
+        </div>
+<<<<<<< HEAD
+    </div>
+
+    <div class="table-filter">
+        <div class="row">
+            <div class="col-sm-10">
+                <span class="filter-icon"><i class="fa fa-filter"></i></span>
+                <div class="filter-group">
+                    <label>Buscar</label>
+                    <input type="text" class="form-control" id="buscarTexto" name="buscarTexto"
+                        [(ngModel)]="buscarTexto">
+                </div>
+
+               <!--  <div class="filter-group">
+                    <label>Estatus</label>
+                    <select class="form-control" id="buscarEstatus" name="buscarEstatus" [(ngModel)]="buscarEstatus">
+                        <option value="" selected="">Todos</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div> -->
+                <button type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+            </div>
+
+            <div class="col-sm-2 text-right">
+                <div class="show-entries">
+                    <span>Mostrar</span>
+                    <select class="form-control" id="per_page" [(ngModel)]="nPag">
+                        <option value="6">6</option>
+                        <option value="12">12</option>
+                        <option value="18">18</option>
+                        <option value="24">24</option>
+                    </select>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3">
+        <ng-container
+            *ngFor="let pro of proveedores | buscar:buscarTexto | paginate: { itemsPerPage: nPag, currentPage: p }">
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-dark text-white">
+                        <i class="fas fa-user"></i> {{ pro.nombre }}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <i class="fas fa-map-marker-alt"></i> {{ pro.direccion }}
+                        </p>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let tel of pro.telefono">
+                                <i class="fas fa-phone"></i> {{ tel }}
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let correo of pro.correo">
+                                <i class="fas fa-envelope"></i> {{ correo }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button type="button" class="btn" id="btnAgregar" data-toggle="modal"
+                            data-target="#consultarModal" (click)="consultarProv(pro.codigo)">
+                            Ver detalle
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+    <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+
+    <div class="modal fade" id="consultarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">
+                        Detalle de proveedor
+                    </h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-consultarprov></app-consultarprov>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">
+                        <i class="fas fa-truck mr-3" style="color: rgb(0, 130, 198)"></i>
+                        Agregar Proveedor
+                    </h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-agregarprov></app-agregarprov>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+=======
+      </div>
+    </ng-container>
+  </div>
+
+  <div
+    class="modal fade"
+    id="consultarModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">
+            Detalle de proveedor
+          </h2>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+>>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a
+        </div>
+        <div class="modal-body">
+          <app-consultarprov></app-consultarprov>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+<<<<<<< HEAD
+</div>
+=======
+  </div>
+
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">
+            <i class="fas fa-truck mr-3" style="color: rgb(0, 130, 198)"></i>
+            Agregar Proveedor
+          </h2>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-agregarprov></app-agregarprov>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+>>>>>>> c0173844d7191f0f0964b9645b1e3605ce5cb22a

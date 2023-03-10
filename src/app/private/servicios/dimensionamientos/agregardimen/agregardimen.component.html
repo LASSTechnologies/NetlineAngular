@@ -1,0 +1,378 @@
+<div>
+    <form class="needs-validation" novalidate>
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom05">Id</label>
+                <input type="number" class="form-control" name="id" id="validationCustom05" ngDefaultControl
+                    [(ngModel)]="dimen.codigo">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom05">Nombre</label>
+                <input type="text" class="form-control" name="nombre" id="validationCustom05" ngDefaultControl
+                    [(ngModel)]="dimen.nombre">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <fieldset>
+            <legend>Cliente</legend>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Empresa</label>
+                <input type="text" class="form-control" name="nombre" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.cliente.empresa">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Nombre</label>
+                <input type="text" class="form-control" name="apellido" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.cliente.nombre">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Telefono</label>
+                <input type="number" class="form-control" name="telefono" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.cliente.telefono">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Correo</label>
+                <input type="email" class="form-control" name="correo" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.cliente.correo">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Direccion</label>
+                <input type="text" class="form-control" name="direccion" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.cliente.direccion">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Empleado</legend>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Recibe</label>
+                <input type="text" class="form-control" name="recibe" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.empleado.recibe">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Participan</label>
+                <input type="text" class="form-control" name="fin" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.empleado.participa">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+        </fieldset>
+
+
+
+        <fieldset>
+            <legend>Fecha</legend>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Recepcion</label>
+                <input type="text" class="form-control" name="recepcion" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.fecha.recepcion">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Atencion</label>
+                <input type="time" class="form-control" name="vigencia" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.fecha.atencion">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+        </fieldset>
+
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom05">Horas</label>
+                <input type="time" class="form-control" name="id" id="validationCustom05" ngDefaultControl
+                    [(ngModel)]="dimen.hora">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom05">Reporte</label>
+                <input type="text" class="form-control" name="reporte" id="validationCustom05" ngDefaultControl
+                    [(ngModel)]="dimen.reporte">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom05">descripcion</label>
+                <input type="text" class="form-control" name="id" id="validationCustom05" ngDefaultControl
+                    [(ngModel)]="dimen.descripcion">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+
+
+        <fieldset>
+            <legend>Servicios</legend>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">nombre</label>
+                <input type="text" class="form-control" name="nombre" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.servicios.nombre">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">categoria</label>
+                <input type="text" class="form-control" name="categoria" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.servicios.categoria">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">descripcion</label>
+                <input type="text" class="form-control" name="descripcion" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.servicios.descripcion">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+        </fieldset>
+
+
+
+
+
+        <fieldset>
+            <legend>Material</legend>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Nombre</label>
+                <input type="text" class="form-control" name="nombre" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.material.nombre">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">noPartes</label>
+                <input type="test" class="form-control" name="noParte" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.material.noParte">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Descripcion</label>
+                <input type="text" class="form-control" name="descripcion" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.material.descripcion">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Unidad</label>
+                <input type="number" class="form-control" name="unidad" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.material.unidad">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">cantidad</label>
+                <input type="number" class="form-control" name="subtotal" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.material.cantidad">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">dias</label>
+                <input type="text" class="form-control" name="dias" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.dias">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">horario</label>
+                <input type="text" class="form-control" name="horario" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.horario">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Peronal</label>
+                <input type="text" class="form-control" name="peronal" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.peronal">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Notas</label>
+                <input type="text" class="form-control" name="notas" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="dimen.notas">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Estatus</label>
+                <select class="form-control" id="estatus" name="estatus" ngDefaultControl [(ngModel)]="dimen.estatus">
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                </select>
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-info" (click)="guardarDim()">Guardar</button>
+
+    </form>
+
+</div>

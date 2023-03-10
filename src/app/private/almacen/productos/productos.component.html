@@ -1,0 +1,158 @@
+<div class="container">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">
+            <i id="iconoComponente" class="fas fa-box"
+                style="font-size: 50px; color: rgb(0, 130, 198); padding: 0 20px"></i>
+            Productos
+        </h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="button" class="btn" id="btnAgregar" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-plus"></i>
+                Agregar
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">
+                        <i class="fas fa-box-open"
+                            style="font-size: 50px; color: rgb(0, 130, 198); padding: 0 20px"></i>
+                        Agregar Producto
+                    </h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-agregarprod></app-agregarprod>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="consultarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">
+                        Detalle del producto
+                    </h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-consultarprod></app-consultarprod>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="table-filter">
+        <div class="row">
+            <div class="col-sm-10">
+                <span class="filter-icon"><i class="fa fa-filter"></i></span>
+                <div class="filter-group">
+                    <label>Buscar</label>
+                    <input type="text" class="form-control" id="buscarTexto" name="buscarTexto"
+                        [(ngModel)]="buscarTexto">
+                </div>
+
+                <!-- <div class="filter-group">
+                    <label>Estatus</label>
+                    <select class="form-control" id="buscarEstatus" name="buscarEstatus" [(ngModel)]="buscarEstatus">
+                        <option value="" selected="">Todos</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div> -->
+                <button type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+            </div>
+
+            <div class="col-sm-2 text-right">
+                <div class="show-entries">
+                    <span>Mostrar</span>
+                    <select class="form-control" id="per_page" [(ngModel)]="nPag">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="table-responsive-xl">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="">#</th>
+                    <th class="">Nombre</th>
+                    <th class="">No. de Parte</th>
+                    <th class="">Proveedor</th>
+                    <th class="">Tipo</th>
+                    <th class="">Categoría</th>
+                    <th class="">Descripción</th>
+                    <th class="">Unidad</th>
+                    <th class="">Precio</th>
+                    <th class="">Existencia</th>
+                    <th class="">Imagen</th>
+                    <th class="">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let producto of productos | buscar:buscarTexto | paginate: { itemsPerPage: nPag, currentPage: p }">
+                    <td>{{ producto.codigo }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.noParte }}</td>
+                    <td>{{ producto.proveedores }}</td>
+                    <td>{{ producto.tipo }}</td>
+                    <td>{{ producto.categoria }}</td>
+                    <td>{{ producto.descripcion }}</td>
+                    <td>{{ producto.unidad }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.existencia }}</td>
+                    <td *ngIf="!producto.imagen; else otraimg">
+                        <img src="http://localhost:3000/foto/defaultproduct.png" alt="Imagen del producto" width="50px"
+                            height="50px" style="border-radius: 20px" />
+                    </td>
+                    <ng-template #otraimg>
+                        <img src="{{ producto.imagen }}" alt="Imagen del producto" width="100px" height="100px"
+                            style="border-radius: 20px" />
+                    </ng-template>
+                    <td>
+                        <button type="button" class="btn detalle-btn" style="border: none; background-color: none"
+                            data-toggle="modal" data-target="#consultarModal" (click)="consultarProd(producto.codigo)">
+                            <i style="color: rgb(0, 89, 148); position: relative" class="fas fa-eye">
+                                <span class="detalle-text">Ver detalle</span>
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="p = $event" previousLabel="Anterior"
+            nextLabel="Siguiente"></pagination-controls>
+    </div>
+</div>

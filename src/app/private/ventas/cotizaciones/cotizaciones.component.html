@@ -1,0 +1,70 @@
+<div class="container">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Cotizacion</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                Agregar
+            </button>
+        </div>
+
+        <button class="btn btn-secondary" (click)="consultarTodoCot()">
+            Consultar
+        </button>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Agregar Cotizacion</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <app-agregarcot></app-agregarcot>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="table-responsive-xl">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="">#</th>
+                    <th class="">Nombre</th>
+                    <th class="">Empresa Cliente</th>
+                    <th class="">Fecha de Recepción</th>
+                    <th class="">Vigencia</th>
+                    <th class="">Pago</th>
+                    <th class="">Total</th>
+                    <th class="">Notas</th>
+                    <th class="">Estatus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr scope="row" *ngFor="let cotizacion of cotizacions">
+                    <td>{{ cotizacion.codigo }}</td>
+                    <td>{{ cotizacion.nombre }}</td>
+                    <td>{{ cotizacion.cliente.empresa }}</td>
+                    <td>{{ cotizacion.fecha.recepcion }}</td>
+                    <td>{{ cotizacion.fecha.vigencia }}</td>
+                    <td>{{ cotizacion.pago }}</td>
+                    <td>{{ cotizacion.total }}</td>
+                    <td>{{ cotizacion.notas }}</td>
+                    <td>{{ cotizacion.estatus }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

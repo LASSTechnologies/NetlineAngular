@@ -1,0 +1,124 @@
+<div>
+    <form class="needs-validation" novalidate>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="producto.nombre"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="noParte">No. de Parte:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="noParte"
+          name="noParte"
+          [(ngModel)]="producto.noParte"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="proveedores">Proveedores:</label>
+        <select
+          class="form-control"
+          id="proveedores"
+          name="proveedores"
+          [(ngModel)]="producto.proveedores"
+          required
+        >
+          <option
+            *ngFor="let proveedor of proveedores"
+            [value]="proveedor.nombre"
+          >
+            {{ proveedor.nombre }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="tipo">Tipo:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="tipo"
+          name="tipo"
+          [(ngModel)]="producto.tipo"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="categoria">Categoría:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="categoria"
+          name="categoria"
+          [(ngModel)]="producto.categoria"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea
+          class="form-control"
+          id="descripcion"
+          name="descripcion"
+          [(ngModel)]="producto.descripcion"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="unidad">Unidad:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="unidad"
+          name="unidad"
+          [(ngModel)]="producto.unidad"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input
+          type="decimal"
+          class="form-control"
+          id="precio"
+          name="precio"
+          [(ngModel)]="producto.precio"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="existencia">Existencia:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="existencia"
+          name="existencia"
+          [(ngModel)]="producto.existencia"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="imagen">Imagen:</label>
+        <input
+          type="file"
+          class="form-control"
+          id="imagen"
+          name="imagen"
+          accept="image/png, image/jpeg, image/jpg, image/gif"
+          (change)="fotoSeleccionada($event)"
+          [(ngModel)]="producto.imagen"
+          required
+        />
+      </div>
+  
+      <button class="btn btn-info" (click)="guardarProd()">Guardar</button>
+    </form>
+  </div>
+  
