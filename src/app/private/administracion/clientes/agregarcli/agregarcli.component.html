@@ -10,30 +10,18 @@
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationCustom01">Nombre</label>
-        <input
-          type="text"
-          class="form-control"
-          name="nombre"
-          id="validationCustom01"
-          ngDefaultControl
-          [(ngModel)]="cliente.nombre"
-        />
+        <input type="text" class="form-control" name="nombre" id="validationCustom01" ngDefaultControl
+          [(ngModel)]="cliente.nombre" />
         <div class="valid-feedback">Correcto!</div>
         <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="validationCustom02">Tipo</label>
-        <select
-          class="form-select"
-          aria-label="Default select example"
-          name="tipo"
-          id="validationCustom02"
-          ngDefaultControl
-          [(ngModel)]="cliente.tipo"
-        >
+        <select class="form-select" aria-label="Default select example" name="tipo" id="validationCustom02"
+          ngDefaultControl [(ngModel)]="cliente.tipo">
           <option selected>Seleccionar</option>
-          <option value="1">Empresa</option>
-          <option value="2">Independiente</option>
+          <option value="Empresa">Empresa</option>
+          <option value="Independiente">Independiente</option>
         </select>
         <div class="valid-feedback">Correcto!</div>
         <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
@@ -42,27 +30,15 @@
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationCustom03">Direccion</label>
-        <input
-          type="text"
-          class="form-control"
-          name="direccion"
-          id="validationCustom03"
-          ngDefaultControl
-          [(ngModel)]="cliente.direccion"
-        />
+        <input type="text" class="form-control" name="direccion" id="validationCustom03" ngDefaultControl
+          [(ngModel)]="cliente.direccion" />
         <div class="valid-feedback">Correcto!</div>
         <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="validationCustom05">RFC</label>
-        <input
-          type="text"
-          class="form-control"
-          name="rfc"
-          id="validationCustom05"
-          ngDefaultControl
-          [(ngModel)]="cliente.rfc"
-        />
+        <input type="text" class="form-control" name="rfc" id="validationCustom05" ngDefaultControl
+          [(ngModel)]="cliente.rfc" />
         <div class="valid-feedback">Correcto!</div>
         <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
       </div>
@@ -73,27 +49,15 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="validationCustom01">Nombre</label>
-          <input
-            type="text"
-            class="form-control"
-            name="nombre"
-            id="validationCustom01"
-            ngDefaultControl
-            [(ngModel)]="cliente.responsable.nombre"
-          />
+          <input type="text" class="form-control" name="nombre" id="validationCustom01" ngDefaultControl
+            [(ngModel)]="cliente.responsable.nombre" />
           <div class="valid-feedback">Correcto!</div>
           <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
         </div>
         <div class="col-md-6 mb-3">
           <label for="validationCustom01">Apellido</label>
-          <input
-            type="text"
-            class="form-control"
-            name="apellido"
-            id="validationCustom01"
-            ngDefaultControl
-            [(ngModel)]="cliente.responsable.apellido"
-          />
+          <input type="text" class="form-control" name="apellido" id="validationCustom01" ngDefaultControl
+            [(ngModel)]="cliente.responsable.apellido" />
           <div class="valid-feedback">Correcto!</div>
           <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
         </div>
@@ -101,27 +65,15 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="validationCustom01">Télefono</label>
-          <input
-            type="phone"
-            class="form-control"
-            name="telefono"
-            id="validationCustom01"
-            ngDefaultControl
-            [(ngModel)]="cliente.responsable.telefono"
-          />
+          <input type="phone" class="form-control" name="telefono" id="validationCustom01" ngDefaultControl
+            [(ngModel)]="cliente.responsable.telefono" />
           <div class="valid-feedback">Correcto!</div>
           <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
         </div>
         <div class="col-md-6 mb-3">
           <label for="validationCustom01">Correo</label>
-          <input
-            type="email"
-            class="form-control"
-            name="correo"
-            id="validationCustom01"
-            ngDefaultControl
-            [(ngModel)]="cliente.responsable.correo"
-          />
+          <input type="email" class="form-control" name="correo" id="validationCustom01" ngDefaultControl
+            [(ngModel)]="cliente.responsable.correo" />
           <div class="valid-feedback">Correcto!</div>
           <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
         </div>
@@ -130,27 +82,15 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="validationCustom01">Inicio</label>
-          <input
-            type="time"
-            class="form-control"
-            name="inicio"
-            id="validationCustom01"
-            ngDefaultControl
-            [(ngModel)]="cliente.horario.inicio"
-          />
+          <input type="time" class="form-control" name="inicio" id="validationCustom01" ngDefaultControl
+            [(ngModel)]="cliente.horario.inicio" />
           <div class="valid-feedback">Correcto!</div>
           <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
         </div>
         <div class="col-md-6 mb-3">
           <label for="validationCustom01">Fin</label>
-          <input
-            type="time"
-            class="form-control"
-            name="fin"
-            id="validationCustom01"
-            ngDefaultControl
-            [(ngModel)]="cliente.horario.fin"
-          />
+          <input type="time" class="form-control" name="fin" id="validationCustom01" ngDefaultControl
+            [(ngModel)]="cliente.horario.fin" />
           <div class="valid-feedback">Correcto!</div>
           <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
         </div>
@@ -159,15 +99,9 @@
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationCustom03">Estatus</label>
-        <select
-          class="form-control"
-          id="estatus"
-          name="estatus"
-          ngDefaultControl
-          [(ngModel)]="cliente.estatus"
-        >
-          <option value="activo">Activo</option>
-          <option value="inactivo">Inactivo</option>
+        <select class="form-control" id="estatus" name="estatus" ngDefaultControl [(ngModel)]="cliente.estatus">
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
         </select>
         <div class="valid-feedback">Correcto!</div>
         <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
@@ -177,14 +111,8 @@
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationCustom03">Image</label>
-        <input
-          type="file"
-          class="form-control"
-          name="imagen"
-          id="validationCustom03"
-          accept="image/png, image/jpeg, image/gif"
-          (change)="fotoseleccionada($event)"
-        />
+        <input type="file" class="form-control" name="imagen" id="validationCustom03"
+          accept="image/png, image/jpeg, image/gif" (change)="fotoseleccionada($event)" />
         <div class="valid-feedback">Correcto!</div>
         <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
       </div>

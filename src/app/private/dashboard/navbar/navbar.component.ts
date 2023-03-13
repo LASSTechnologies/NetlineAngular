@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
-  
+  sesion = {
+    nombre: localStorage.getItem("nombre"),
+    apellido: localStorage.getItem("apellido"),
+    puesto: localStorage.getItem("puesto"),
+    imagen: localStorage.getItem("imagen")
+  }
 
 }

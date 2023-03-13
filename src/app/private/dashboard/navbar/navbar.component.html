@@ -3,10 +3,17 @@
     <!-- Sidebar Header    -->
     <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
       <!-- User Info-->
-      <div class="sidenav-header-inner text-center"><img class="img-fluid rounded-circle avatar mb-3"
-          src="../../../assets/img/avatar-2.jpg" alt="person">
-        <h2 class="h5 text-white text-uppercase mb-0">Nathan Andrews</h2>
-        <p class="text-sm mb-0 text-muted">Web Developer</p>
+      <div class="sidenav-header-inner text-center">
+        <div *ngIf="sesion.imagen=='undefined'; else otraimg">
+          <img class="img-fluid rounded-circle avatar mb-3" src="http://localhost:3000/foto/defaultuser.png"
+            alt="person">
+        </div>
+        <ng-template #otraimg>
+          <img class="img-fluid rounded-circle avatar mb-3" src="{{sesion.imagen}}" alt="person">
+        </ng-template>
+
+        <h2 class="h5 text-white text-uppercase mb-0">{{sesion.nombre+ " "+ sesion.apellido}} </h2>
+        <p class="text-sm mb-0 text-muted">{{sesion.puesto}}</p>
       </div>
       <!-- Small Brand information, appears on minimized sidebar--><a class="brand-small text-center" href=""
         routerLink="inicio">

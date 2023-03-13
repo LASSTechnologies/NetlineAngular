@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { EmpleadosService } from 'src/app/services/empleados.service';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-empleados',
@@ -7,672 +9,84 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./empleados.component.css']
 })
 export class EmpleadosComponent {
-  resultado!: string;
-  p: number = 1;
+  constructor(private ServicioEmp: EmpleadosService,) { }
+  file: any;
+  empleados: any = [];
 
-  constructor(private fb: FormBuilder) {
+  p: number = 1;
+  nPag: number = 0;
+  buscarTexto = '';
+  buscarEstatus = '';
+
+  empleado = {
+    codigo: "",
+    nombre: "",
+    apellido: "",
+    puesto: "",
+    telefono: "",
+    correo: "",
+    direccion: "",
+    estatus: "",
+    imgurl: "",
 
   }
 
-  empleado = {
-    codigo: "codigo",
-    nombre: "nombre",
-    apellido: "apellido",
-    telefono: "telefono",
-    correo: "correo",
-    direccion: "direccion",
-    puesto: "puesto",
-    imagen: "imagen",
-    estatus: "estatus",
-    idUsuario: "idUsuario"
+  consultarEmp(codigo: string) {
+    this.ServicioEmp.consultar(codigo).subscribe(
+      res => {
+        this.ServicioEmp.empleado.codigo = res.emp.codigo;
+        this.ServicioEmp.empleado.nombre = res.emp.nombre;
+        this.ServicioEmp.empleado.apellido = res.emp.apellido;
+        this.ServicioEmp.empleado.puesto = res.emp.puesto;
+        this.ServicioEmp.empleado.telefono = res.emp.telefono;
+        this.ServicioEmp.empleado.correo = res.emp.correo;
+        this.ServicioEmp.empleado.direccion = res.emp.direccion;
+        this.ServicioEmp.empleado.estatus = res.emp.estatus;
+        this.ServicioEmp.empleado.imgurl = res.emp.imgurl;
+      },
+      (err) => {
+        console.log(err);
+        if (typeof err.error === 'string') {
+          alert(err.error);
+        } else {
+          alert(err.error.error[0].msg);
+        }
+        this.limpiarEmpServicio();
+      }
+    );
+  } //Cierre del metodo
+
+  ngOnInit(): void {
+    this.consultarTodoEmp();
   }
 
   consultarTodoEmp() {
+    this.empleados = this.ServicioEmp.consultarTodo();
+  }//cierre de consultar todo
 
-  }//Cierre del metodo consultarTodoEmp
+  limpiarEmpServicio() {
+    this.ServicioEmp.empleado.codigo = "";
+    this.ServicioEmp.empleado.nombre = "";
+    this.ServicioEmp.empleado.apellido = "";
+    this.ServicioEmp.empleado.puesto = "";
+    this.ServicioEmp.empleado.telefono = "";
+    this.ServicioEmp.empleado.correo = "";
+    this.ServicioEmp.empleado.direccion = "";
+    this.ServicioEmp.empleado.estatus = "";
+    this.ServicioEmp.empleado.imgurl = "";
+  }//Cierre del metodo limpiarEmp
 
   limpiarEmp() {
     this.empleado.codigo = "";
     this.empleado.nombre = "";
+    this.empleado.apellido = "";
+    this.empleado.puesto = "";
     this.empleado.telefono = "";
     this.empleado.correo = "";
     this.empleado.direccion = "";
-    this.empleado.puesto = "";
-    this.empleado.imagen = "";
     this.empleado.estatus = "";
-    this.empleado.idUsuario = "";
-
-
-
+    this.empleado.imgurl = "";
   }//Cierre del metodo limpiarEmp
 
-  empl = [
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-    {
-      codigo: "1",
-      nombre: "Humberto",
-      apellido: "Contreras",
-      telefono: "336547891",
-      correo: "Hcontreras@correo.com",
-      direccion: "Calle 1 #123, Ciudad",
-      puesto: "Gerente de Ventas<",
-      imagen: "imagen.jpg",
-      estatus: "Activo"
-    },
-    {
-      codigo: "2",
-      nombre: "María",
-      apellido: "Gómez",
-      telefono: "0987654321",
-      correo: "mariagomez@mail.com",
-      direccion: "Calle 2 #456, Ciudad",
-      puesto: "Asistente Administrativo",
-      imagen: "imagen.jpg",
-      estatus: "Inactivo"
-    },
-    {
-      codigo: "3",
-      nombre: "Pablo ",
-      apellido: "Hernández",
-      telefono: "2345678901",
-      correo: "pablohernandez@mail.com",
-      direccion: "Calle 3 #789, Ciudad",
-      puesto: "Técnico de Soporte",
-      imagen: "imagen.jpg",
-      estatus: "activo"
-    },
-  ];
+
 }

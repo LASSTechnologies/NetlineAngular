@@ -1,1 +1,150 @@
-<p>consultaremp works!</p>
+<div>
+    <form class="needs-validation" novalidate>
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <img src="{{ this.ServicioEmp.empleado.imgurl }}" class="rounded-circle" alt="..." width="150"
+                    height="150" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Nombre</label>
+                <input type="text" class="form-control" name="nombre" id="validationCustom01" ngDefaultControl
+                    [(ngModel)]="this.ServicioEmp.empleado.nombre">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom02">apellido</label>
+                <input type="text" class="form-control" name="apellido" id="validationCustom02" ngDefaultControl
+                    [(ngModel)]="this.ServicioEmp.empleado.apellido">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom05">Puesto</label>
+                <input type="text" class="form-control" name="puesto" id="validationCustom05" ngDefaultControl
+                    [(ngModel)]="this.ServicioEmp.empleado.puesto">
+
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Telefono</label>
+                <input type="phone" class="form-control" name="telefono" id="validationCustom03" ngDefaultControl
+                    [(ngModel)]="this.ServicioEmp.empleado.telefono">
+
+
+
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom05">Correo</label>
+                <input type="email" class="form-control" name="correo" id="validationCustom05" ngDefaultControl
+                    [(ngModel)]="this.ServicioEmp.empleado.correo">
+
+
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Direccion</label>
+                <input type="text" class="form-control" name="direccion" id="validationCustom03" ngDefaultControl
+                    [(ngModel)]="this.ServicioEmp.empleado.direccion">
+
+
+
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Estatus</label>
+                <select class="form-control" id="estatus" name="estatus" ngDefaultControl
+                    [(ngModel)]="this.ServicioEmp.empleado.estatus">
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Image</label>
+                <input type="file" class="form-control" name="imagen" id="validationCustom03"
+                    accept="image/png, image/jpeg, image/gif" (change)="fotoseleccionada($event)" />
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Por favor ingresa un dato valido.</div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <button class="btn btn-success" style="color: black" type="submit" (click)="modificarEmp()">
+                    Actualizar datos
+                </button>
+                <button data-toggle="modal" data-target="#confirmarEliminar" class="btn btn-danger">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+
+    </form>
+    <div class="modal fade" id="confirmarEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    ¿Seguro que quieres eliminar a este cliente?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger"
+                        (click)="eliminarEmp(this.ServicioEmp.empleado.codigo)">
+                        Eliminar
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

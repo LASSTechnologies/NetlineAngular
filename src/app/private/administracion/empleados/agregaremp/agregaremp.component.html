@@ -1,19 +1,12 @@
+<div class="alert d-none alert-success popup" role="alert">
+    Empleado agregado
+</div>
+
+
 <div>
     <form class="needs-validation" novalidate>
 
-        <div class="form-row">
-            <div class="col-md-3 mb-3">
-                <label for="validationCustom05">Código</label>
-                <input type="number" class="form-control" name="id" id="validationCustom05" ngDefaultControl
-                    [(ngModel)]="empleado.codigo">
-                <div class="valid-feedback">
-                    Correcto!
-                </div>
-                <div class="invalid-feedback">
-                    Por favor ingresa un dato valido.
-                </div>
-            </div>
-        </div>
+
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="validationCustom01">Nombre</label>
@@ -38,11 +31,13 @@
                 </div>
             </div>
         </div>
+
+
         <div class="form-row">
             <div class="col-md-6 mb-3">
-                <label for="validationCustom03">Telefono</label>
-                <input type="number" class="form-control" name="telefono" id="validationCustom03" ngDefaultControl
-                    [(ngModel)]="empleado.telefono">
+                <label for="validationCustom05">Puesto</label>
+                <input type="text" class="form-control" name="rfc" id="validationCustom05" ngDefaultControl
+                    [(ngModel)]="empleado.puesto">
                 <div class="valid-feedback">
                     Correcto!
                 </div>
@@ -51,6 +46,22 @@
                 </div>
             </div>
             <div class="col-md-6 mb-3">
+
+                <label for="validationCustom03">Telefono</label>
+                <input type="phone" class="form-control" name="telefono" id="validationCustom03" ngDefaultControl
+                    [(ngModel)]="empleado.telefono">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor ingresa un dato valido.
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+
+
                 <label for="validationCustom05">Correo</label>
                 <input type="email" class="form-control" name="correo" id="validationCustom05" ngDefaultControl
                     [(ngModel)]="empleado.correo">
@@ -61,24 +72,12 @@
                     Por favor ingresa un dato valido.
                 </div>
             </div>
-        </div>
-
-        <div class="form-row">
             <div class="col-md-6 mb-3">
+
+
                 <label for="validationCustom03">Direccion</label>
                 <input type="text" class="form-control" name="direccion" id="validationCustom03" ngDefaultControl
                     [(ngModel)]="empleado.direccion">
-                <div class="valid-feedback">
-                    Correcto!
-                </div>
-                <div class="invalid-feedback">
-                    Por favor ingresa un dato valido.
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="validationCustom05">Puesto</label>
-                <input type="text" class="form-control" name="rfc" id="validationCustom05" ngDefaultControl
-                    [(ngModel)]="empleado.puesto">
                 <div class="valid-feedback">
                     Correcto!
                 </div>
@@ -93,8 +92,8 @@
                 <label for="validationCustom03">Estatus</label>
                 <select class="form-control" id="estatus" name="estatus" ngDefaultControl
                     [(ngModel)]="empleado.estatus">
-                    <option value="activo">Activo</option>
-                    <option value="inactivo">Inactivo</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
                 </select>
                 <div class="valid-feedback">
                     Correcto!
@@ -109,7 +108,7 @@
             <div class="col-md-6 mb-3">
                 <label for="validationCustom03">Image</label>
                 <input type="file" class="form-control" name="imagen" id="validationCustom03"
-                    accept="image/png, image/jpeg, image/gif">
+                    accept="image/png, image/jpeg, image/gif" (change)="fotoseleccionada($event)" />
                 <div class="valid-feedback">
                     Correcto!
                 </div>

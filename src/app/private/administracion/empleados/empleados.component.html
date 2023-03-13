@@ -1,14 +1,16 @@
 <div class="container">
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Empleados</h1>
+        <h1 class="h2">Empleados
+            <i class="fas fa-user-tie" style="font-size: 50px; color: rgb(0, 130, 198); padding: 0 20px"></i>
+        </h1>
         <div class="btn-toolbar mb-2 mb-md-0">
 
             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
                 Agregar
             </button>
         </div>
-        <button class="btn btn-secondary" (click)="consultarTodoEmp()">Consultar</button>
+
     </div>
 
 
@@ -31,49 +33,58 @@
         </div>
     </div>
 
+    <div class="modal fade" id="consultarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Detalle Cliente</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-consultaremp></app-consultaremp>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <hr>
 
     <div class="table-filter">
         <div class="row">
-
-            <div class="col-sm-9">
-                <button type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
-                <div class="filter-group">
-                    <label>Nombre</label>
-                    <input type="text" class="form-control" id="name">
-                </div>
-                <div class="filter-group">
-                    <label>Ubicación</label>
-                    <select class="form-control" id="location">
-                        <option value="">Todos</option>
-                        <option value="Berlin">Berlin</option>
-                        <option value="London">London</option>
-                        <option value="Madrid">Madrid</option>
-                        <option value="New York">New York</option>
-                        <option value="Paris">Paris</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>Estado</label>
-                    <select class="form-control" id="status">
-                        <option value="">Todos</option>
-                        <option value="Entregado">Entregado</option>
-                        <option value="Enviada">Enviada</option>
-                        <option value="Pendiente">Pendiente</option>
-                        <option value="Cancelado">Cancelado</option>
-                    </select>
-                </div>
+            <div class="col-sm-10">
                 <span class="filter-icon"><i class="fa fa-filter"></i></span>
+                <div class="filter-group">
+                    <label>Buscar</label>
+                    <input type="text" class="form-control" id="buscarTexto" name="buscarTexto"
+                        [(ngModel)]="buscarTexto">
+                </div>
+
+                <div class="filter-group">
+                    <label>Estatus</label>
+                    <select class="form-control" id="buscarEstatus" name="buscarEstatus" [(ngModel)]="buscarEstatus">
+                        <option value="" selected="">Todos</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
             </div>
 
-            <div class="col-sm-3 text-right">
+            <div class="col-sm-2 text-right">
                 <div class="show-entries">
                     <span>Mostrar</span>
-                    <select class="form-control" id="per_page">
-                        <option>5</option>
-                        <option>10</option>
-                        <option selected="">15</option>
-                        <option>20</option>
+                    <select class="form-control" id="per_page" [(ngModel)]="nPag">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
                     </select>
 
                 </div>
@@ -83,39 +94,69 @@
         </div>
     </div>
 
-    <div class="table-responsive-xl">
+    <div>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th class="">Código</th>
+                    <th class="">#</th>
                     <th class="">Nombre</th>
-                    <th class="">Teléfono</th>
                     <th class="">Correo</th>
-                    <th class="">Dirección</th>
-                    <th class="">Fecha de contratación</th>
                     <th class="">Puesto</th>
                     <th class="">Imagen</th>
                     <th class="">Estatus</th>
+                    <th class="">accion</th>
                 </tr>
             </thead>
             <tbody>
-                <tr scope="row" *ngFor="let emp of empl | paginate: { itemsPerPage: 10, currentPage: p }">
+                <tr scope="row"
+                    *ngFor="let emp of empleados | async | buscar:buscarTexto |estatus:buscarEstatus | paginate: { itemsPerPage: nPag, currentPage: p }">
                     <td scope="row">{{emp.codigo}}</td>
                     <td>{{emp.nombre}}</td>
-                    <td>{{emp.apellido}}</td>
-                    <td>{{emp.telefono}}</td>
                     <td>{{emp.correo}}</td>
-                    <td>{{emp.direccion}}</td>
                     <td>{{emp.puesto}}</td>
-                    <td>{{emp.imagen}}</td>
+                    <td *ngIf="!emp.imagen; else otraimg">
+                        <img src="http://localhost:3000/foto/defaultuser.png" alt="imagen" width="100px" height="100px"
+                            style="border-radius: 20px" />
+                    </td>
+                    <ng-template #otraimg>
+                        <td>
+                            <img src="{{ emp.imagen }}" alt="Imagen no disponible" width="100px" height="100px"
+                                style="border-radius: 20px" />
+                        </td>
+                    </ng-template>
                     <td>{{emp.estatus}}</td>
+                    <td>
+                        <button type="button" class="btn detalle-btn" style="border: none; background: none"
+                            data-toggle="modal" data-target="#consultarModal" (click)="consultarEmp(emp.codigo)">
+                            <i style="color: rgb(0, 89, 148); position: relative" class="fas fa-eye">
+                                <span class="detalle-text">Ver detalle</span>
+                            </i>
+                        </button>
+
+                    </td>
 
                 </tr>
-                
             </tbody>
-
         </table>
         <pagination-controls (pageChange)="p = $event" previousLabel="Anterior"
-                    nextLabel="Siguiente"></pagination-controls>
+            nextLabel="Siguiente"></pagination-controls>
+        <!-- <div class="modal fade" id="consultar" tabindex="-1" aria-labelledby="consultar" aria-hidden="true">
+          <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h2 class="modal-title" id="consultar">Empleado</h2>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <app-consultaremp></app-consultaremp>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  </div>
+              </div>
+          </div>
+      </div> -->
     </div>
 </div>
