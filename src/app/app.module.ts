@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { HttpClientModule } from '@angular/common/http';
 
 //Pipetas 
 import { BuscarPipe } from './pipe/buscar.pipe';
@@ -19,7 +20,7 @@ import { ServiciosService } from './services/servicios.service';
 import { CotizacionesService } from './services/cotizaciones.service';
 import { OrdenesservicioService } from './services/ordenesservicio.service';
 import { DimensionamientosService } from './services/dimensionamientos.service';
-import { HttpClientModule } from '@angular/common/http';
+import { ControlAccesoESPService } from './services/control-acceso-esp.service';
              
 //Listado de componentes
 import { AppComponent } from './app.component';
@@ -82,6 +83,7 @@ import { EliminardimenComponent } from './private/servicios/dimensionamientos/el
 import { ExportardimenComponent } from './private/servicios/dimensionamientos/exportardimen/exportardimen.component';
 
 import { ConsultarcatComponent } from './private/almacen/catalogo/consultarcat/consultarcat.component';
+import { ControlaccesoComponent } from './private/controlacceso/controlacceso.component';
 
 @NgModule({
   declarations: [
@@ -136,6 +138,7 @@ import { ConsultarcatComponent } from './private/almacen/catalogo/consultarcat/c
     ExportardimenComponent,
     BuscarPipe,
     EstatusPipe,
+    ControlaccesoComponent,
   ],
   imports: [
     BrowserModule,
@@ -152,7 +155,8 @@ import { ConsultarcatComponent } from './private/almacen/catalogo/consultarcat/c
     ServiciosService,
     CotizacionesService,
     OrdenesservicioService,
-    DimensionamientosService
+    DimensionamientosService,
+    ControlAccesoESPService
   ],
   bootstrap: [AppComponent]
 })

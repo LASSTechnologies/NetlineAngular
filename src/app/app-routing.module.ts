@@ -18,6 +18,7 @@ import { CotizacionesComponent } from './private/ventas/cotizaciones/cotizacione
 import { ServiciosComponent } from './private/servicios/servicios.component';
 import { OrdenserviciosComponent } from './private/servicios/ordenservicios/ordenservicios.component';
 import { DimensionamientosComponent } from './private/servicios/dimensionamientos/dimensionamientos.component';
+import { ControlaccesoComponent } from './private/controlacceso/controlacceso.component';
 //Componentes parte cliente
 import { ClientComponent } from './client/client.component';
 
@@ -50,7 +51,8 @@ const routes: Routes = [
           { path: "ordenesservicio", component: OrdenserviciosComponent },
           { path: "dimensionamientos", component: DimensionamientosComponent }
         ]
-      }
+      },
+      { path: "controlacceso", component: ControlaccesoComponent }
     ]
   },
   { path: "client", component: ClientComponent },

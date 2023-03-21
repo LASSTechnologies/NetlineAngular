@@ -1,0 +1,57 @@
+<div class="container">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">
+            <i id="iconoComponente" class="fas fa-door-open"
+                style="font-size: 50px; color: rgb(0, 130, 198); padding: 0 20px"></i>
+            Control de Acceso
+        </h1>
+    </div>
+    <hr />
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 border">
+                <img src="http://192.168.90.144" id="stream-image" width="80%" class="p-3">
+                <!-- <img src="../../../assets/img/cctv.jpg" id="stream-image" width="100%" class="p-3"> -->
+            </div>
+            <div class="col-sm-6 border">
+                <div class="row">
+                    <div class="col-6 border pb-3">
+                        <h2 class="h4 fw-normal">Cochera</h2>
+                        <div class="btn-group">
+                            <button class="btn btn-primary" (click)="cochera('abrir')">Abrir</button>
+                            <button class="btn btn-warning" (click)="cochera('cerrar')">Cerrar</button>
+                        </div>
+                    </div>
+                    <div class="col-6 border pb-3">
+                        <h2 class="h4 fw-normal">Puerta</h2>
+                        <div class="btn-group">
+                            <button class="btn btn-primary" (click)="puerta()">Abrir</button>
+                        </div>
+                    </div>
+                    <div class="col-6 border pb-3">
+                        <h2 class="h4 fw-normal">Alarma</h2>
+                        <div class="btn-group">
+                            <button class="btn btn-primary" (click)="alarma('activar')">Activar</button>
+                            <button class="btn btn-warning" (click)="alarma('desactivar')">Desactivar</button>
+                        </div>
+                    </div>
+                    <div class="col-6 border pb-3">
+                        <h2 class="h4 fw-normal">Iluminación</h2>
+                        <div class="btn-group">
+                            <button class="btn btn-primary" (click)="iluminacion('encender')">Encender</button>
+                            <button class="btn btn-warning" (click)="iluminacion('apagar')">Apagar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    setInterval(function () {
+        document.getElementById('stream-image').src = "http://192.168.90.144"
+    }, 1000);
+
+</script>
